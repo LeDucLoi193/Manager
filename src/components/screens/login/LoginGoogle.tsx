@@ -15,13 +15,17 @@ export const LoginGoogle = ({ setAppToken }) => {
     console.log(response);
   }
 
+  const handleFailure = (response: GoogleLoginResponse) => {
+    console.log(response)
+  }
+
   return (
     <GoogleLogin
       clientId={CLIENT_ID}
       buttonText="Login with Google"
       className={styles.buttonLoginGoogle}
       onSuccess={responseGoogle}
-      // onFailure={responseGoogle}
+      onFailure={handleFailure}
       cookiePolicy={'single_host_origin'}
     />
   )
