@@ -12,6 +12,7 @@ export const Layout = ({ children }) => {
   const [appToken, setAppToken] = useState<string>('')
   
   useEffect(() => {
+    console.log(1)
     if (typeof window !== 'undefined') {
       setAppToken(getLocalStorage(APP_TOKEN))
     }

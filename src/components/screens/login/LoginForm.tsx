@@ -99,7 +99,7 @@ export const LoginForm = ({ setAppToken }) => {
         </Button>
       </Form>
       <div className="mt-3">
-        {/* <LoginGoogle setAppToken={setAppToken}/> */}
+        <LoginGoogle setAppToken={setAppToken}/>
       </div>
     </Card>
   )

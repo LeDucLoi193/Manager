@@ -7,11 +7,12 @@ import styles from '~/styles/components/screen/loginGoogle.module.scss'
 
 export const LoginGoogle = ({ setAppToken }) => {
   const responseGoogle = (response: GoogleLoginResponse) => {
-    if (response) {
-      setLocalStorage(GET_ME, JSON.stringify(response.profileObj))
-      setLocalStorage(APP_TOKEN, JSON.stringify(response.accessToken))
-      setAppToken(JSON.stringify(response.accessToken))
-    }
+    // if (response) {
+    //   setLocalStorage(GET_ME, JSON.stringify(response.profileObj))
+    //   setLocalStorage(APP_TOKEN, JSON.stringify(response.accessToken))
+    //   setAppToken(JSON.stringify(response.accessToken))
+    // }
+    console.log(response)
   }
 
   return (
