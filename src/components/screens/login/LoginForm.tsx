@@ -48,7 +48,7 @@ export const LoginForm = ({ setAppToken }) => {
       setIsLoading(false)
       setLocalStorage(APP_TOKEN, JSON.stringify((response as any).access_token))
       setLocalStorage(GET_ME, JSON.stringify((response as any).me))
-      setAppToken(JSON.stringify((response as any).access_token))
+      setAppToken((response as any).access_token)
     } catch (error) {
       setIsLoading(false)
       setError(error)

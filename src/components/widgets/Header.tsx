@@ -18,7 +18,6 @@ export const Header = ({ setAppToken }) => {
 
   // let user = {} as IMe
   useEffect(() => {
-    console.log(getLocalStorage(GET_ME));
     if (getLocalStorage(GET_ME)) {
       user.current = JSON.parse(getLocalStorage(GET_ME))
     }
