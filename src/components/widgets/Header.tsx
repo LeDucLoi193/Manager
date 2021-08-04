@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { NavLink, Navbar, Col, Input } from 'reactstrap'
 import { Image } from 'react-bootstrap'
 import { IconLogin } from '~/src/components/elements'
@@ -8,6 +8,7 @@ import { IMe } from '~/src/models/users'
 import styles from '~/styles/components/widgets/header.module.scss'
 
 export const Header = ({ setAppToken }) => {
+  const user = useRef({} as IMe)
   const onHandleLogout = () => {
     removeLocalStorage(APP_TOKEN)
     removeLocalStorage(GET_ME)
@@ -15,11 +16,13 @@ export const Header = ({ setAppToken }) => {
     setAppToken('')
   }
 
-  let user = {} as IMe
-  if (getLocalStorage(GET_ME)) {
-    user = JSON.parse(getLocalStorage(GET_ME))
-  }
-
+  // let user = {} as IMe
+  useEffect(() => {
+    console.log(getLocalStorage(GET_ME));
+    if (getLocalStorage(GET_ME)) {
+      user.current = JSON.parse(getLocalStorage(GET_ME))
+    }
+  }, [])
   return (
     <div className={styles.header}>
       <Navbar style={{ backgroundColor: '#282828' }} expand="md">
@@ -34,12 +37,12 @@ export const Header = ({ setAppToken }) => {
         <Col className="d-flex justify-content-end" xs="">
           <NavLink style={{ color: '#FFFFFF' }}>
             <span className="cursor-pointer ml-2" title='Logout'>
-              {user.name}
+              {user.current.name}
             </span>
           </NavLink>
           <NavLink style={{ color: '#FFFFFF' }}>
             <span className="cursor-pointer" title='Logout'>
-              <Image src={user.imageUrl} className={styles.avatar} alt="avatar" />
+              <Image src={user.current.imageUrl} className={styles.avatar} alt="avatar" />
             </span>
           </NavLink>
           <NavLink style={{ color: '#FFFFFF' }} onClick={onHandleLogout}>
