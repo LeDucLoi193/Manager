@@ -15,7 +15,7 @@ export const Layout = ({ children }) => {
     if (typeof window !== 'undefined') {
       setAppToken(() => getLocalStorage(APP_TOKEN))
     }
-    if (!appToken) {
+    else if (!appToken) {
       Router.push({ pathname: '/' })
     }
   }, [])
