@@ -7,7 +7,7 @@ import styles from '~/styles/components/screen/loginGoogle.module.scss'
 
 export const LoginGoogle = ({ setAppToken }) => {
   const responseGoogle = (response: GoogleLoginResponse) => {
-    if (!response.error) {
+    if (response) {
       setLocalStorage(GET_ME, JSON.stringify(response.profileObj))
       setLocalStorage(APP_TOKEN, JSON.stringify(response.accessToken))
       setAppToken(response.accessToken)
