@@ -14,17 +14,21 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     console.log(1)
     if (typeof window !== 'undefined') {
-      setAppToken(getLocalStorage(APP_TOKEN))
+      setAppToken(() => getLocalStorage(APP_TOKEN))
     }
     if (!appToken) {
       Router.push({ pathname: '/' })
     }
-  }, [appToken])
+  }, [])
+
+  const handleSetAppToken = (token) => {
+    setAppToken(token)
+  }
 
   return (
     <>
       {!appToken ? (
-        <LoginForm setAppToken={setAppToken} />
+        <LoginForm setAppToken={handleSetAppToken} />
       ) : (
         <>
           <Header setAppToken={setAppToken} />
